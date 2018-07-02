@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/bootstrap.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/bootstrap.js"></script>
+
 </head>
 <body>
     <div class="container" >
@@ -24,7 +25,7 @@
 					 <a href="#">欢迎使用器材系统</a>
 				</li>
 				<li class="dropdown pull-right">
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">用户名<strong class="caret"></strong></a>
+					 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%=(String) session.getAttribute("username")%><strong class="caret"></strong></a>
 					<ul class="dropdown-menu">
 						<li>
 							 <a href="#">个人中心</a>
@@ -50,7 +51,8 @@
 				</div>
 				<div class="col-md-6 column">
 					<span class="span-select">
-						<button type="button" class="btn btn-success btn-user" >
+						<button type="button" class="btn btn-success btn-user" 
+						onclick="window.location.href='${pageContext.request.contextPath }/toReturnPage.action?userId=<%= session.getAttribute("userid")%>'">
 							<p class="p-fontsize">器材归还</p>
 						</button>
 					</span>

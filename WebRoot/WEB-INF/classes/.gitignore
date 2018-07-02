@@ -1,1 +1,5 @@
 /com/
+/applicationContext.xml
+/db.properties
+/springmvc.xml
+/sqlMapConfig.xml

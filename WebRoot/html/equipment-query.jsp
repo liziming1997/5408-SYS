@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,7 @@
 <title>器材系统-租借</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/equipment-query.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/bootstrap.css">
+
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/equipment-query.js"></script>
@@ -24,25 +26,30 @@ $(function(){
             type : "post",
             dataType : "json",//回调
             success : function(data){
-            	$("#eqId").html(data.eqId);
-            	$("#eqName").html(data.eqName);
-            	$("#eqWarehouseId").html(data.eqWarehouseAdress);
-            	$("#eqClassId").html(data.eqClassName);
-            	$("#eqAmount").html(data.eqAmount);
-            	$("#eqExpand").html(data.eqExpand);
-            	$("#eqSurplus").html(data.eqSurplus);
+            	$("#eq_id").html(data.eq_id);
+            	$("#eq_name").html(data.eq_name);
+            	$("#eq_deposit").html(data.eq_deposit);
+            	$("#eq_price").html(data.eq_price);
+            	$("#eq_overdue").html(data.eq_overdue);
+            	$("#eq_damage").html(data.eq_damage);
+            	$("#eq_lose").html(data.eq_lose);
             }
         });
     	$("#welcome-div ").hide();
     	$("#detail-div").show();
     	$("#detail-tag-a").text(this.innerHTML);
-    	
 	});
+    $("#btn_lese").bind('click', function() {
+    	 $(location).attr('href', "${pageContext.request.contextPath }/toLeasePage.action?id="
+
+    		 +$("#eq_id").text()+"&deposit="+$("#eq_deposit").text()+"&price="+$("#eq_price").text());
+    });
+   
+    
 });
 </script>
 </head>
 <body>
-<input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
 	<div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column div-block">
@@ -50,8 +57,11 @@ $(function(){
 				<li class="active">
 					 <a href="#">欢迎使用器材系统</a>
 				</li>
+				<li >
+					 <a href="${pageContext.request.contextPath }/html/equipment-index-user.jsp">返回主页</a>
+				</li>
 				<li class="dropdown pull-right">
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">用户名<strong class="caret"></strong></a>
+					 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%=(String) session.getAttribute("username")%><strong class="caret"></strong></a>
 					<ul class="dropdown-menu">
 						<li>
 							 <a href="#">个人中心</a>
@@ -122,37 +132,38 @@ $(function(){
 				<table class="table">
 					<tr>
 						<th>编号</th>
-						<td id="eqId">123</td>
+						<td id="eq_id">123</td>
 					</tr>
 					<tr>
 						<th>名字</th>
-						<td id="eqName"></td>
+						<td id="eq_name"></td>
 					</tr>
 
 					<tr>
-						<th>所属仓库</th>
-						<td id="eqWarehouseId"></td>
-					</tr>
-					<tr>
-						<th>所属类别</th>
-						<td id="eqClassId"></td>
-					</tr>
-					<tr>
-						<th>总数</th>
-						<td id="eqAmount"></td>
-					</tr>
-					<tr>
-						<th>剩余</th>
-						<td id="eqExpand"></td>
+						<th>押金/元</th>
+						<td id="eq_deposit"></td>
 					</tr>
 					<tr>
 						<th>租金/周</th>
-						<td id="eqSurplus"></td>
+						<td id="eq_price"></td>
+					</tr>
+					<tr>
+						<th>逾期赔偿/元</th>
+						<td id="eq_overdue"></td>
+					</tr>
+					<tr>
+						<th>损坏赔偿/元</th>
+						<td id="eq_damage"></td>
+					</tr>
+					<tr>
+						<th>丢失赔偿/元</th>
+						<td id="eq_lose"></td>
 					</tr>
 					<tr>
 						<th>操作</th>
 						<td>
-							<button class="btn btn-success " >租借</button>
+							<button class="btn btn-success " id="btn_lese"> 
+							 租借</button>
 							<button class="btn btn-success " >返回</button>
 						</td>
 					</tr>

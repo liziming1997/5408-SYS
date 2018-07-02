@@ -17,7 +17,6 @@
 
 </head>
 <body>
-<input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
 	<div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column div-block">
@@ -25,8 +24,11 @@
 				<li class="active">
 					 <a href="#">欢迎使用器材系统</a>
 				</li>
+				<li >
+					 <a href="${pageContext.request.contextPath }/html/equipment-index-user.jsp">返回主页</a>
+				</li>
 				<li class="dropdown pull-right">
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">用户名<strong class="caret"></strong></a>
+					 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%=(String) session.getAttribute("username")%><strong class="caret"></strong></a>
 					<ul class="dropdown-menu">
 						<li>
 							 <a href="#">个人中心</a>
@@ -73,7 +75,7 @@
 					 <a href="#" id="detail-tag-a">查询结果</a>
 				</li>
 			</ul>
-			<table class="table" style="ext-align:center;">
+			<table class="table" >
 				<thead>
 					<tr>
 						<th>编号</th>
@@ -82,8 +84,8 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody>
 					<c:forEach items="${eqList }" var="list">
+					<tbody>
 						<tr>
 							<td>${list.eqId }</td>
 							<td>${list.eqName }</td>
@@ -91,12 +93,11 @@
 							<td><button  class="btn btn-success" 
 								onclick="window.location.href='${pageContext.request.contextPath }/toCheckdetail.action?id=${list.eqId }'">查看</button></td>
 						</tr>
+					</tbody>
 					</c:forEach>
-				</tbody>
 			</table>
 		</div>
 		</c:if>
-		
 	</div>
 </body>
 </html>

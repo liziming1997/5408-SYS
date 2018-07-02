@@ -11,6 +11,7 @@
 
 	<context:property-placeholder location="classpath:db.properties"/>
 	
+	
 	<!-- 数据库连接池 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -29,7 +30,7 @@
 		<property name="configLocation" value="classpath:sqlMapConfig.xml"/>
 	</bean>
 	
-
+	<bean id="sysUserServiceImp" class="com.lzm.service.equipmentServiceImpl"></bean>
 
 	<!-- Mapper动态代理开发   扫描 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -43,6 +44,6 @@
 	</bean>
 	
 	<!-- 开启注解 -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 	
 </beans>

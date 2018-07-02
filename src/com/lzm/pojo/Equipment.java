@@ -10,7 +10,6 @@ public class Equipment {
     private Integer eqWarehouseId;
     private Integer eqClassId;
     private Integer eqAmount;
-    private Integer eqExpand;
     private Integer eqSurplus;
     
 
@@ -18,15 +17,9 @@ public class Equipment {
 	public String toString() {
 		return "Equipment [eqId=" + eqId + ", eqName=" + eqName
 				+ ", eqWarehouseId=" + eqWarehouseId + ", eqClassId="
-				+ eqClassId + ", eqAmount=" + eqAmount + ", eqExpand="
-				+ eqExpand + ", eqSurplus=" + eqSurplus + "]";
+				+ eqClassId + ", eqAmount=" + eqAmount  + ", eqSurplus=" + eqSurplus + "]";
 	}
-	public Integer getEqExpand() {
-		return eqExpand;
-	}
-	public void setEqExpand(Integer eqExpand) {
-		this.eqExpand = eqExpand;
-	}
+	
 	public Integer getEqSurplus() {
 		return eqSurplus;
 	}

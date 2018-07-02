@@ -14,8 +14,6 @@ public class EquipmentTemp {
     private Integer eqExpand;
     private Integer eqSurplus;
     
-
-    
 	public String getEqWarehouseName() {
 		return eqWarehouseName;
 	}
@@ -66,7 +64,4 @@ public class EquipmentTemp {
 	public void setEqClassName(String eqClassName) {
 		this.eqClassName = eqClassName;
 	}
-	
-
-    
 }
